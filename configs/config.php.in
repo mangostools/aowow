@@ -1,0 +1,34 @@
+<?php
+
+global $UDWBaseconf;
+
+// -- WORLD Database --
+$UDWBaseconf['world']['host']           = '127.0.0.1';
+$UDWBaseconf['world']['user']           = 'zp';
+$UDWBaseconf['world']['pass']           = 'zpdb';
+$UDWBaseconf['world']['db']             = 'zp_world';
+$UDWBaseconf['world']['table_prefix']   = ''; // optional table prefix
+
+// -- Realmd Database --
+$UDWBaseconf['realmd']['host']          = '127.0.0.1';
+$UDWBaseconf['realmd']['user']          = 'zp';
+$UDWBaseconf['realmd']['pass']          = 'zpdb';
+$UDWBaseconf['realmd']['db']            = 'zp_realm';
+$UDWBaseconf['realmd']['table_prefix']  = ''; // optional table prefix
+
+// -- AoWoW Database --
+$UDWBaseconf['aowow']['host']           = '127.0.0.1';
+$UDWBaseconf['aowow']['user']           = 'zp';
+$UDWBaseconf['aowow']['pass']           = 'zpdb';
+$UDWBaseconf['aowow']['db']             = 'zp_aowow';
+$UDWBaseconf['aowow']['table_prefix']   = ''; // optional table prefix
+
+// Site Configuration
+$UDWBaseconf['udwbase']['name']         = 'mangos-zero DB';
+$UDWBaseconf['udwbase']['template']     = 'wowhead';
+$UDWBaseconf['udwbase']['cache_time']   = (60*60*24*7); // Time to keep cache in seconds (Default: 1 week)
+$UDWBaseconf['locale']                  = 0;
+$UDWBaseconf['register']                = false;
+$UDWBaseconf['expansion']               = 0; // Used with register
+$UDWBaseconf['limit']                   = 300;
+$UDWBaseconf['debug']                   = true;

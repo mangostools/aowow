@@ -1,1 +1,9 @@
 # List of files and directories not to include in the repository.
+
+# Application configuration
+configs/config.php
+
+# Cache
+.cache/world/*.aww
+.cache/templates/wowhead/%%*.php
+/.cache/
