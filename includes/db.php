@@ -18,15 +18,16 @@ require_once 'includes/DbSimple/Generic.php';
 // Configuration array
 global $UDWBaseconf;
 
-// Connect to world DB 
-$DB = DbSimple_Generic::connect("mysql://" . $UDWBaseconf['world']['user'] . ":" . $UDWBaseconf['world']['pass'] . "@" . $UDWBaseconf['world']['host'] . "/" . $UDWBaseconf['world']['db']);
+// Connect to world DB
+$DBSimple = new DbSimple_Generic();
+$DB = $DBSimple->connect("mysql://" . $UDWBaseconf['world']['user'] . ":" . $UDWBaseconf['world']['pass'] . "@" . $UDWBaseconf['world']['host'] . "/" . $UDWBaseconf['world']['db']);
 $DB->setErrorHandler('databaseErrorHandler');
 $DB->setIdentPrefix($UDWBaseconf['world']['table_prefix']);
 $DB->query('SET NAMES ?', 'utf8');
 
 // Connect to the realm DB
 if ($UDWBaseconf['realmd']) {
-    $rDB = DbSimple_Generic::connect("mysql://" . $UDWBaseconf['realmd']['user'] . ":" . $UDWBaseconf['realmd']['pass'] . "@" . $UDWBaseconf['realmd']['host'] . "/" . $UDWBaseconf['realmd']['db']);
+    $rDB = $DBSimple->connect("mysql://" . $UDWBaseconf['realmd']['user'] . ":" . $UDWBaseconf['realmd']['pass'] . "@" . $UDWBaseconf['realmd']['host'] . "/" . $UDWBaseconf['realmd']['db']);
     $rDB->setErrorHandler('databaseErrorHandler');
     $rDB->setIdentPrefix($UDWBaseconf['realmd']['table_prefix']);
     $rDB->query('SET NAMES ?', 'utf8');
@@ -34,10 +35,10 @@ if ($UDWBaseconf['realmd']) {
 
 /**
  * Error handling
- * 
+ *
  * @param type $message
  * @param type $info
- * @return type 
+ * @return type
  */
 function databaseErrorHandler($message, $info) {
     // If @ has been used, do nothing.
@@ -58,7 +59,7 @@ if ($UDWBaseconf['debug'])
  *
  * @global type $smarty
  * @param type $db
- * @param type $sql 
+ * @param type $sql
  */
 function myLogger($db, $sql) {
     global $smarty;
@@ -67,16 +68,16 @@ function myLogger($db, $sql) {
 
 /**
  * PRECACHING
- * 
+ *
  * Contents of the file:
- * 
+ *
  * - cache_delete_timestamp
  * - serialized data
  * - serialized allitems
  * - serialized allspells
  * - serialized exdata
  * - serialized zonedata
- * 
+ *
  */
 $cache_types = array(
     1 => 'npc_page',
@@ -112,7 +113,7 @@ $cache_types = array(
  * @param type $type_id
  * @param type $data
  * @param type $prefix
- * @return type 
+ * @return type
  */
 function save_cache($type, $type_id, $data, $prefix = '') {
     global $cache_types, $allitems, $allspells, $UDWBaseconf, $exdata, $zonedata;
@@ -160,7 +161,7 @@ function save_cache($type, $type_id, $data, $prefix = '') {
  * @global type $zonedata
  * @param type $type
  * @param type $type_id
- * @return type 
+ * @return type
  */
 function load_cache($type, $type_id) {
     global $cache_types, $smarty, $allitems, $allspells, $exdata, $zonedata;

@@ -60,13 +60,13 @@
 <option value="440">Tanaris</option>
 <option value="141">Teldrassil</option>
 <option value="17">The Barrens</option>
-<option value="3557">The Exodar</option>
 <option value="400">Thousand Needles</option>
 <option value="1638">Thunder Bluff</option>
 <option value="490">Un'Goro Crater</option>
 <option value="618">Winterspring</option>
-
+</select>
 <div style="padding-bottom: 4px"></div>
+
 <select onchange="mapperChooseZone(this)" class="zone-picker">
 <option value="0">Instances</option>
 <optgroup label="Dungeons">
@@ -108,7 +108,8 @@
 
 <option value="19">Zul'Gurub</option>
 </optgroup>
-</select><select onchange="mapperChooseZone(this)" class="zone-picker">
+</select>
+<select onchange="mapperChooseZone(this)" class="zone-picker">
 <option value="0">More</option>
 <optgroup label="Battlegrounds">
 <option value="2597">Alterac Valley</option>
