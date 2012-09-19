@@ -1,9 +1,41 @@
-# List of files and directories not to include in the repository.
+# Add directories, files, and symlinks which shall not be stored within
+# this git repository here.
 
-# Application configuration
-configs/config.php
+# Placeholder files for directories needed to be inside git but empty
+!*.gitkeep
 
-# Cache
-.cache/world/*.aww
-.cache/templates/wowhead/%%*.php
+# JetBrains - project settings
+/.idea/
+
+# Eclipse - project settings
+/.project
+/.settings
+/.buildpath
+/.externalToolBuilders
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.sass-cache
+
+# OS or Editor folders
+.DS_Store
+.cache
+.project
+.settings
+.tmproj
+nbproject
+Thumbs.db
+
+# Configuration files to be customized
+/configs/config.php
+
+# Cache and log files
 /.cache/
