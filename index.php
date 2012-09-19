@@ -9,7 +9,7 @@
  * @copyright   Copyright (c) 2011 mangos foundation (http://getmangos.com/)
  * @license     http://www.gnu.org/licenses/gpl.html GPL v3
  */
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Настройка шаблонизатора и ДБ

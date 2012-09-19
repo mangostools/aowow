@@ -1259,8 +1259,9 @@ var Menu = {
                     O.className = "menusub"
                 }
                 if (V[X][5] != null) {
+                    V[X][5] = V[X][5].toLowerCase();
                     F.className = "icontiny";
-                    F.style.backgroundImage = "url(images/icons/tiny/" + V[X][5] + ".gif)";
+                    F.style.backgroundImage = "url(images/icons/small/" + V[X][5] + ".png)";
                     if (V[X].checked) {
                         var K = ce("span");
                         K.className = "menucheck";

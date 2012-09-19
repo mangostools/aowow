@@ -1,5 +1,4 @@
 <?php
-
 /*
  * UDWBase: WOWDB Web Interface
  *

@@ -287,7 +287,6 @@ if (!$npc = load_cache(1, intval($id))) {
 
     // Положения созданий божих:
     position($npc['entry'], 'creature');
-
     save_cache(1, $npc['entry'], $npc);
 }
 
