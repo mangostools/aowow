@@ -11,8 +11,8 @@
  */
 
 // Для списка creatureinfo()
-$npc_cols[0] = array('name', 'subname', 'minlevel', 'maxlevel', 'type', 'rank', 'A', 'H');
-$npc_cols[1] = array('subname', 'minlevel', 'maxlevel', 'type', 'rank', 'minhealth', 'maxhealth', 'minmana', 'maxmana', 'mingold', 'maxgold', 'lootid', 'spell1', 'spell2', 'spell3', 'spell4', 'A', 'H', 'mindmg', 'maxdmg', 'attackpower', 'dmg_multiplier', 'armor');
+$npc_cols[0] = array('name', 'subname', 'minlevel', 'maxlevel', 'Creaturetype', 'rank', 'FactionAlliance', 'FactionHorde');
+$npc_cols[1] = array('subname', 'minlevel', 'maxlevel', 'Creaturetype', 'rank', 'minhealth', 'maxhealth', 'minmana', 'maxmana', 'mingold', 'maxgold', 'lootid', 'spell1', 'spell2', 'spell3', 'spell4', 'FactionAlliance', 'FactionHorde', 'mindmg', 'maxdmg', 'attackpower', 'dmg_multiplier', 'armor');
 
 // Функция информации о создании
 /**
@@ -33,9 +33,9 @@ function creatureinfo2(&$Row) {
     // TODO: Месторасположение
     //	$creature['location'] = location($creature['entry'],'creature');
     // TODO: Реакция на фракции
-    $creature['react'] = ($Row['A']) . ',' . ($Row['H']);
+    $creature['react'] = ($Row['FactionAlliance']) . ',' . ($Row['FactionHorde']);
     // Тип NPC
-    $creature['type'] = $Row['type'];
+    $creature['type'] = $Row['Creaturetype'];
     // Тег NPC
     $creature['tag'] = str_normalize($Row['subname']);
     // Ранг NPC
@@ -66,7 +66,7 @@ function creatureinfo($id) {
 		}
 		WHERE
 			c.entry=?d
-			AND factiontemplateID=faction_A
+			AND factiontemplateID=factionAlliance
 		LIMIT 1
 		', $npc_cols[0], ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $id
     );
