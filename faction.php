@@ -75,8 +75,8 @@ if (!$faction = load_cache(18, intval($id))) {
 			SELECT ?#, entry
 			FROM ?_creature_template, ?_aowow_factiontemplate
 			WHERE
-				faction_A IN (SELECT factiontemplateID FROM ?_aowow_factiontemplate WHERE factionID=?d)
-				AND factiontemplateID=faction_A
+				FactionAlliance IN (SELECT factiontemplateID FROM ?_aowow_factiontemplate WHERE factionID=?d)
+				AND factiontemplateID=FactionAlliance
 			', $npc_cols[0], $id
         );
         if ($creature_rows) {

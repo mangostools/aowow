@@ -94,7 +94,7 @@ $rows = $DB->select('
 			(name LIKE ?
 			OR subname LIKE ?
 			{OR c.entry IN (?a)})
-			AND factiontemplateID=faction_A
+			AND factiontemplateID=FactionAlliance
 	', $npc_cols[0], ($m) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($m) ? 1 : DBSIMPLE_SKIP, $nsearch, $nsearch, ($m) ? $m : DBSIMPLE_SKIP
 );
 unset($m);

@@ -51,7 +51,7 @@ if (!$item = load_cache(5, $id)) {
 				{ LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ? }
 				WHERE
 					lootid=?d
-					AND factiontemplateID=faction_A
+					AND factiontemplateID=FactionAlliance
 				', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $lootid
             );
             foreach ($rows as $numRow => $row)
@@ -85,7 +85,7 @@ if (!$item = load_cache(5, $id)) {
 					{ LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ? }
 					WHERE
 	                                        c.lootid = ?d
-						AND factiontemplateID=faction_A
+						AND factiontemplateID=FactionAlliance
 					', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $lrow['entry']
                 );
                 foreach ($rows as $numRow => $row)
@@ -152,7 +152,7 @@ if (!$item = load_cache(5, $id)) {
 		WHERE
 			v.item=?d
 			AND c.entry=v.entry
-			AND factiontemplateID=faction_A
+			AND factiontemplateID=FactionAlliance
 		ORDER BY 1 DESC, 2 DESC
 		', $npc_cols['0'], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $item['entry']
     );
@@ -273,7 +273,7 @@ if (!$item = load_cache(5, $id)) {
 				{ LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ? }
 				WHERE
 					pickpocketloot=?d
-					AND factiontemplateID=faction_A
+					AND factiontemplateID=FactionAlliance
 				', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $lootid
             );
             foreach ($rows as $numRow => $row)
@@ -300,7 +300,7 @@ if (!$item = load_cache(5, $id)) {
 				{ LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ? }
 				WHERE
 					skinloot=?d
-					AND factiontemplateID=faction_A
+					AND factiontemplateID=FactionAlliance
 				', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $lootid
             );
             foreach ($rows as $numRow => $row)

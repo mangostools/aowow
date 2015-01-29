@@ -37,9 +37,9 @@ if (!$npcs = load_cache(2, $cache_str)) {
 		FROM ?_aowow_factiontemplate, ?_creature_template c
 		{ LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ? }
 		WHERE 1=1
-			{AND type=?}
+			{AND creatureType=?}
 			{AND family=?}
-			AND factiontemplateID=faction_A
+			AND factiontemplateID=FactionAlliance
 		ORDER BY minlevel DESC, name
 		{LIMIT ?d}
 		', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, ($type != '') ? $type : DBSIMPLE_SKIP, (isset($family)) ? $family : DBSIMPLE_SKIP, ($UDWBaseconf['limit'] != 0) ? $UDWBaseconf['limit'] : DBSIMPLE_SKIP

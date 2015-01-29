@@ -44,7 +44,7 @@ if (!$npc = load_cache(1, intval($id))) {
 		}
 		WHERE
 			c.entry=?
-			AND ft.factiontemplateID=c.faction_A
+			AND ft.factiontemplateID=c.FactionAlliance
 			AND f.factionID=ft.factionID
 		LIMIT 1
 			', $npc_cols[1], ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $id
@@ -79,7 +79,7 @@ if (!$npc = load_cache(1, intval($id))) {
         }
 
         $npc['rank'] = $smarty->get_config_vars('rank' . $npc['rank']);
-        // faction_A = faction_H
+        // FactionAlliance = FactionHorde
         $npc['faction_num'] = $row['factionID'];
         $npc['faction'] = $row['faction-name'];
         // Деньги

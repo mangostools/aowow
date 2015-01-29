@@ -12,7 +12,7 @@
 
 // Для списка creatureinfo()
 $npc_cols[0] = array('name', 'subname', 'minlevel', 'maxlevel', 'Creaturetype', 'rank', 'FactionAlliance', 'FactionHorde');
-$npc_cols[1] = array('subname', 'minlevel', 'maxlevel', 'Creaturetype', 'rank', 'minhealth', 'maxhealth', 'minmana', 'maxmana', 'mingold', 'maxgold', 'lootid', 'spell1', 'spell2', 'spell3', 'spell4', 'FactionAlliance', 'FactionHorde', 'mindmg', 'maxdmg', 'attackpower', 'dmg_multiplier', 'armor');
+$npc_cols[1] = array('subname', 'minlevel', 'maxlevel', 'creaturetype', 'rank', 'MinLevelHealth', 'MaxLevelHealth', 'MinLevelMana', 'MaxLevelMana', 'MinLootGold', 'MaxLootGold', 'lootid', /*'spell1', 'spell2', 'spell3', 'spell4',*/ 'FactionAlliance', 'FactionHorde', 'MinMeleeDmg', 'MaxMeleeDmg', 'MeleeAttackPower', 'DamageMultiplier', 'armor');
 
 // Функция информации о создании
 /**
@@ -66,7 +66,7 @@ function creatureinfo($id) {
 		}
 		WHERE
 			c.entry=?d
-			AND factiontemplateID=factionAlliance
+			AND factiontemplateID=FactionAlliance
 		LIMIT 1
 		', $npc_cols[0], ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $id
     );
