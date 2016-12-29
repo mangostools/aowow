@@ -434,7 +434,8 @@ if (!$item = load_cache(5, $id)) {
 				WHERE spellID=?d
 				LIMIT 1', $row['spellID']
             );
-            $item['createdfrom'][] = spellinfo2(array_merge($row, $skillrow));
+            $merged = array_merge($row, $skillrow);
+            $item['createdfrom'][] = spellinfo2($merged);
         }
         unset($skillrow);
     }
