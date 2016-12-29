@@ -157,17 +157,17 @@ if (!$spell = load_cache(13, intval($id))) {
                         case 50: // "Summon Object"				// 103 spells, OK
                         case 76: // "Summon Object (Wild)"		// 173 spells, OK
                         //case 86: // "Activate Object"			// 175 spells; wrong GOs, tiny ID; skipping
-                        case 104: // "Summon Object (slot 1)"	// 24 spells - traps, OK
+                        case 104: { // "Summon Object (slot 1)"	// 24 spells - traps, OK
                             //case 105: // "Summon Object (slot 2)"	// 2 spells: 22996, 23005; wrong GOs; skipping
                             //case 106: // "Summon Object (slot 3)"	// 0 spells; skipping
-                            //case 107: // "Summon Object (slot 4)"	// 0 spells; skipping {
+                            //case 107: // "Summon Object (slot 4)"	// 0 spells; skipping
                                 $spell['effect'][$i]['object'] = array();
                                 $spell['effect'][$i]['object']['entry'] = $row['effect' . $j . 'MiscValue'];
                                 $spell['effect'][$i]['object']['name'] = $DB->selectCell("SELECT name FROM ?_gameobject_template WHERE entry=? LIMIT 1", $spell['effect'][$i]['object']['entry']) . ' (' . $spell['effect'][$i]['object']['entry'] . ')';
                                 break;
                             }
                         // скиллы
-                        case 118: // "Require Skill" {
+                        case 118: {// "Require Skill"
                                 $spell['effect'][$i]['name'] .= ' (' . $DB->selectCell('SELECT name FROM ?_aowow_skill WHERE skillID=? LIMIT 1', $row['effect' . $j . 'MiscValue']) . ')';
                                 break;
                             }
@@ -180,7 +180,7 @@ if (!$spell = load_cache(13, intval($id))) {
                         case 87: // "Summon Totem (slot 1)"
                         case 88: // "Summon Totem (slot 2)"
                         case 89: // "Summon Totem (slot 3)"
-                        case 90: // "Summon Totem (slot 4)" {
+                        case 90: { // "Summon Totem (slot 4)"
                                 $spell['effect'][$i]['name'] .= ' (<a href="?npc=' . $row['effect' . $j . 'MiscValue'] . '">' . $row['effect' . $j . 'MiscValue'] . '</a>)';
                                 break;
                             }
@@ -205,7 +205,7 @@ if (!$spell = load_cache(13, intval($id))) {
                 if ($row['effect' . $j . 'Aura'] > 0 && IsSet($spell_aura_names[$row['effect' . $j . 'Aura']]))
                     switch ($row['effect' . $j . 'Aura']) {
                         case 78: // "Mounted" - приписываем ссылку на нпс
-                        case 56: // "Transform" {
+                        case 56: { // "Transform"
                                 $spell['effect'][$i]['name'] .= ': ' . $spell_aura_names[$row['effect' . $j . 'Aura']] . ' (<a href="?npc=' . $row['effect' . $j . 'MiscValue'] . '">' . $row['effect' . $j . 'MiscValue'] . '</a>)';
                                 break;
                             }
