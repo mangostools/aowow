@@ -325,13 +325,13 @@ if (!$quest = load_cache(10, intval($id))) {
     $rows = $DB->select('
 		SELECT c.entry, c.name, A, H
 			{, l.name_loc?d as `name_loc`}
-		FROM ?_creature_questrelation q, ?_aowow_factiontemplate, ?_creature_template c
+		FROM ?quest_relations q, ?_aowow_factiontemplate, ?_creature_template c
 			{LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ?}
 		WHERE
 			q.quest=?d
-			AND c.entry=q.id
+			AND c.entry=q.entry
 			AND factiontemplateID=c.FactionAlliance
-		', ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $quest['entry']
+		', ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $quest['entry'], $quest['entry']
     );
     if ($rows) {
         foreach ($rows as $tmp) {
@@ -350,11 +350,11 @@ if (!$quest = load_cache(10, intval($id))) {
     $rows = $DB->select('
 		SELECT g.entry, g.name
 			{, l.name_loc?d as `name_loc`}
-		FROM ?_gameobject_questrelation q, ?_gameobject_template g
+		FROM ?_quest_relations q, ?_gameobject_template g
 			{LEFT JOIN (?_locales_gameobject l) ON l.entry = g.entry AND ?}
 		WHERE
 			q.quest=?d
-			AND g.entry=q.id
+			AND g.entry=q.entry
 		', ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $quest['entry']
     );
     if ($rows) {
@@ -391,11 +391,11 @@ if (!$quest = load_cache(10, intval($id))) {
     $rows = $DB->select('
 		SELECT c.entry, c.name, A, H
 			{, l.name_loc?d as `name_loc`}
-		FROM ?_creature_involvedrelation q, ?_aowow_factiontemplate, ?_creature_template c
+		FROM ?_quest_relations q, ?_aowow_factiontemplate, ?_creature_template c
 			{LEFT JOIN (?_locales_creature l) ON l.entry=c.entry AND ?}
 		WHERE
 			q.quest=?d
-			AND c.entry=q.id
+			AND c.entry=q.entry
 			AND factiontemplateID=c.FactionAlliance
 		', ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $quest['entry']
     );
@@ -416,11 +416,11 @@ if (!$quest = load_cache(10, intval($id))) {
     $rows = $DB->select('
 		SELECT g.entry, g.name
 			{, l.name_loc?d as `name_loc`}
-		FROM ?_gameobject_involvedrelation q, ?_gameobject_template g
+		FROM ?_quest_relations q, ?_gameobject_template g
 			{LEFT JOIN (?_locales_gameobject l) ON l.entry = g.entry AND ?}
 		WHERE
 			q.quest=?d
-			AND g.entry=q.id
+			AND g.entry=q.entry
 		', ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $quest['entry']
     );
     if ($rows) {
