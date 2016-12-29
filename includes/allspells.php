@@ -338,7 +338,7 @@ function spell_desc2($spellRow, $type='tooltip') {
     allspellsinfo2($spellRow);
 
     if (!IsSet($spellRow['duration_base']))
-        $lastduration = $DB->selectRow('SELECT * FROM ?_aowow_spellduration` WHERE durationID=? LIMIT 1', $spellRow['durationID']);
+        $lastduration = $DB->selectRow('SELECT * FROM ?_aowow_spellduration WHERE durationID=? LIMIT 1', $spellRow['durationID']);
 
     $signs = array('+', '-', '/', '*', '%', '^');
 
@@ -826,11 +826,11 @@ function allspellsinfo2(&$row, $level=0) {
     // Имя иконки спелла
     if (($row['effect1itemtype']) and (!($row['effect1Aura']))) {
         if (IsSet($allitems[$row['effect1itemtype']]['icon']))
-            $allspells[$num]['icon'] = $allitems[$row['effect1itemtype']]['icon'];
+            $allspells[$num]['icon'] = trim($allitems[$row['effect1itemtype']]['icon'], "\r");
         else
-            $allspells[$num]['icon'] = $DB->selectCell('SELECT iconname FROM ?_aowow_icons WHERE id=(SELECT displayid FROM ?_item_template WHERE entry=?d LIMIT 1) LIMIT 1', $row['effect1itemtype']);
+            $allspells[$num]['icon'] = trim($DB->selectCell('SELECT iconname FROM ?_aowow_icons WHERE id=(SELECT displayid FROM ?_item_template WHERE entry=?d LIMIT 1) LIMIT 1', $row['effect1itemtype']) , "\r");
     } else {
-        $allspells[$num]['icon'] = $row['iconname'];
+        $allspells[$num]['icon'] = trim($row['iconname'], "\r");
     }
 
     // Тултип спелла
