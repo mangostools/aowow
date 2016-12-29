@@ -167,8 +167,10 @@ function GetQuestStrings(&$data) {
     $data['OfferRewardText'] = QuestReplaceStr(htmlspecialchars(!empty($data['OfferRewardText_loc']) ? $data['OfferRewardText_loc'] : $data['OfferRewardText'] ));
     $data['EndText'] = QuestReplaceStr(htmlspecialchars(!empty($data['EndText_loc']) ? $data['EndText_loc'] : $data['EndText'] ));
 
-    for ($j = 0; $j <= 3; ++$j)
+    for ($j = 1; $j <= 4; ++$j)
+    {
         $data['ObjectiveText'][$j] = QuestReplaceStr(htmlspecialchars(!empty($data['ObjectiveText' . $j . '_loc']) ? $data['ObjectiveText' . $j . '_loc'] : $data['ObjectiveText' . $j]));
+    }
 }
 
 /**

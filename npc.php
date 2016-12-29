@@ -234,10 +234,10 @@ if (!$npc = load_cache(1, intval($id))) {
 
     // Начиниают квесты...
     $rows_qs = $DB->select('
-		SELECT ?#
-		FROM ?_creature_questrelation c, ?_quest_template q
+		SELECT c.?#
+		FROM ?_quest_relations c, ?_quest_template q
 		WHERE
-			c.id=?
+			c.entry=?
 			AND q.entry=c.quest
 		', $quest_cols[2], $id
     );
@@ -251,10 +251,10 @@ if (!$npc = load_cache(1, intval($id))) {
 
     // Заканчивают квесты...
     $rows_qe = $DB->select('
-		SELECT ?#
-		FROM ?_creature_involvedrelation c, ?_quest_template q
+		SELECT c.?#
+		FROM ?_quest_relations c, ?_quest_template q
 		WHERE
-			c.id=?
+			c.entry=?
 			AND q.entry=c.quest
 		', $quest_cols[2], $id
     );

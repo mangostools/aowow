@@ -315,9 +315,15 @@ function mass_coord(&$data) {
     foreach ($data as $ndata) {
         // Если помимо координат есть ещё данные о респауне, преобразуем их к удобочитаемому виду:
         if (isset($ndata['spawntimesecs']))
-            $tmp = array_merge(coord_db2wow($ndata['m'], $ndata['x'], $ndata['y'], false), array('r' => sec_to_time($ndata['spawntimesecs'])));
+        {
+            $coord_db2wow =  coord_db2wow($ndata['m'], $ndata['x'], $ndata['y'], false) ?: array();
+            $tmp = array_merge($coord_db2wow, array('r' => sec_to_time($ndata['spawntimesecs'])));
+        }
         else
+        {
             $tmp = coord_db2wow($ndata['m'], $ndata['x'], $ndata['y'], false);
+        }
+
         $tmp['t'] = $ndata['type'];
         $xdata[] = $tmp;
     }

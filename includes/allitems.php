@@ -10,11 +10,11 @@
  *
  */
 
-require_once 'includes/game.php';
-require_once 'includes/allspells.php';
-require_once 'includes/allitemsets.php';
-require_once 'includes/allobjects.php';
-require_once 'includes/allquests.php';
+require_once('includes/game.php');
+require_once('includes/allspells.php');
+require_once('includes/allitemsets.php');
+require_once('includes/allobjects.php');
+require_once('includes/allquests.php');
 
 // Массивы с названиями столбцов, необходимых для различных уровней вызова функций
 // для allitems($level=0) - соответствия номер-иконка

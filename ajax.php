@@ -81,10 +81,18 @@ switch ($what) {
             save_cache(11, $id, $quest);
         }
         $x .= '$WowheadPower.registerQuest(' . $id . ', 0,{';
-        if ($quest['name'])
-            $x .= 'name: \'' . str_normalize($quest['name']) . '\',';
+        if (isset($quest['Title']))
+        {
+            $x .= 'name: \'' . str_normalize($quest['Title']) . '\',';
+        }
+        else
+        {
+            $x .= 'name: \'' . 'error' . '\',';
+        }
         if ($quest['tooltip'])
+        {
             $x .= 'tooltip: \'' . str_normalize($quest['tooltip']) . '\'';
+        }
         $x .= '});';
         break;
     default:
