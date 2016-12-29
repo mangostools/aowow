@@ -835,7 +835,8 @@ function allspellsinfo2(&$row, $level=0) {
 
     // Тултип спелла
     if ($level > 0) {
-        $allspells[$num]['name'] = $row['spellname'];
+        $spellNameKey = 'spellname' . '_loc' . $_SESSION['locale'];
+        $allspells[$num]['name'] = $row[$spellNameKey] ;
         $allspells[$num]['info'] = render_spell_tooltip($row);
     }
 

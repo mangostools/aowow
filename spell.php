@@ -237,7 +237,7 @@ if (!$spell = load_cache(13, intval($id))) {
                     $spell['effect'][$i]['item']['count'] = $row['effect' . $j . 'BasePoints'] + 1;
                     // Иконка итема, если спелл создает этот итем
                     if (!IsSet($spell['icon']))
-                        $spell['icon'] = $tmpRow['iconname'];
+                        $spell['icon'] = trim($tmpRow['iconname'], "\r");
                     allitemsinfo2($tmpRow, 0);
                 }
                 // Создает спелл
@@ -252,7 +252,7 @@ if (!$spell = load_cache(13, intval($id))) {
         }
 
         if (!IsSet($spell['icon']))
-            $spell['icon'] = $row['iconname'];
+            $spell['icon'] = trim($row['iconname'], "\r");
 
         // Спеллы с таким же названием
         $seealso = $DB->select('
@@ -286,7 +286,7 @@ if (!$spell = load_cache(13, intval($id))) {
 			{ LEFT JOIN (?_locales_creature l) ON c.entry = l.entry AND ? }
 			WHERE
 				c.entry IN (SELECT entry FROM ?_npc_trainer WHERE spell=?d)
-				AND factiontemplateID=faction_A
+				AND factiontemplateID=FactionAlliance
 			', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $spell['entry']
         );
         if ($taughtbytrainers) {
@@ -334,7 +334,7 @@ if (!$spell = load_cache(13, intval($id))) {
 				{ LEFT JOIN (?_locales_creature l) ON c.entry = l.entry AND ? }
 				WHERE
 					c.entry IN (SELECT entry FROM ?_petcreateinfo_spell WHERE (Spell1 IN (?a)) OR (Spell2 IN (?a)) OR (Spell3 IN (?a)) OR (Spell4 IN (?a)))
-					AND factiontemplateID=faction_A
+					AND factiontemplateID=FactionAlliance
 				', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $taughtbyspells, $taughtbyspells, $taughtbyspells, $taughtbyspells
             );
             // Перебираем этих петов
@@ -369,7 +369,7 @@ if (!$spell = load_cache(13, intval($id))) {
 				{ LEFT JOIN (?_locales_creature l) ON c.entry = l.entry AND ? }
 				WHERE
 					c.entry IN (SELECT entry FROM ?_npc_trainer WHERE spell in (?a))
-					AND factiontemplateID=faction_A
+					AND factiontemplateID=FactionAlliance
 				', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $taughtbyspells
             );
             if ($taughtbytrainers) {
@@ -407,11 +407,7 @@ if (!$spell = load_cache(13, intval($id))) {
 			FROM ?_aowow_factiontemplate, ?_creature_template c
 			{ LEFT JOIN (?_locales_creature l) ON c.entry = l.entry AND ? }
 			WHERE
-				(spell1=?d
-				OR spell2=?d
-				OR spell3=?d
-				OR spell4=?d)
-				AND factiontemplateID=faction_A
+				factiontemplateID=FactionAlliance
 			', $npc_cols[0], ($_SESSION['locale'] > 0) ? $_SESSION['locale'] : DBSIMPLE_SKIP, ($_SESSION['locale'] > 0) ? 1 : DBSIMPLE_SKIP, $spell['entry'], $spell['entry'], $spell['entry'], $spell['entry']
         );
         if ($usedbynpc) {
